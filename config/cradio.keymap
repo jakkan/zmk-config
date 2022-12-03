@@ -82,7 +82,8 @@
                 , <&macro_release &kp LSHFT &kp LCTRL>
                 , <&macro_tap     &kp C>
                 , <&macro_tap     &kp N5>
-                , <&macro_tap     &kp RET>;
+                , <&macro_tap     &kp RET>
+                , <&macro_press   &kp LSHFT>;
         };
         ae_upper: ae_upper {
             compatible = "zmk,behavior-macro";
@@ -97,7 +98,8 @@
                 , <&macro_release &kp LSHFT &kp LCTRL>
                 , <&macro_tap     &kp C>
                 , <&macro_tap     &kp N4>
-                , <&macro_tap     &kp RET>;
+                , <&macro_tap     &kp RET>
+                , <&macro_press   &kp LSHFT>;
         };
         oe_upper: oe_upper {
             compatible = "zmk,behavior-macro";
@@ -112,7 +114,8 @@
                 , <&macro_release &kp LSHFT &kp LCTRL>
                 , <&macro_tap     &kp D>
                 , <&macro_tap     &kp N6>
-                , <&macro_tap     &kp RET>;
+                , <&macro_tap     &kp RET>
+                , <&macro_press   &kp LSHFT>;
         };
         ao: ao {
             compatible = "zmk,behavior-mod-morph";
