@@ -85,3 +85,10 @@ Function layer
                        │                       │                       │
                        ╰───────────────────────┴───────────────────────╯
 ```
+
+## Related projects
+
+These projects rely on home row mods and home row arrow keys.
+
+- [https://github.com/jakkan/neovim-config](https://github.com/jakkan/neovim-config)
+- [https://github.com/jakkan/dotfiles](https://github.com/jakkan/dotfiles)
