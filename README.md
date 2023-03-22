@@ -86,6 +86,19 @@ Function layer
                        ╰───────────────────────┴───────────────────────╯
 ```
 
+## Building
+
+Firmware is built on push by github action.
+
+## Flashing
+
+Do for each half:
+
+- Download firmware from Github
+- Plug in the keyboard with USB
+- Double press reset button and wait for the keyboard to be detected as a USB connected device
+- Copy firm ware to keyboard
+
 ## Related projects
 
 These projects rely on home row mods and home row arrow keys.
