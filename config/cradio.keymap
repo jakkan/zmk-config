@@ -7,30 +7,29 @@
 #define NAV 2
 #define FUN 3 
 
-#define LEFT_KEYS 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24  // left-hand keys
-#define RIGHT_KEYS 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29  // right-hand keys
+#define FINGER_KEYS_LEFT 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
+#define FINGER_KEYS_RIGHT 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
 
 / {
     behaviors {
-        // based on example use-case for home row mods from: https://zmk.dev/docs/behaviors/hold-tap
-        lhm: left_homerow_mods {
+        hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
-            label = "LEFT_POSITIONAL_HOLD_TAP";
+            label = "HOMEROW_MODS_LEFT";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <200>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <RIGHT_KEYS>;
+            hold-trigger-key-positions = <FINGER_KEYS_RIGHT>;
             hold-trigger-on-release;
         };
-        rhm: right_homerow_mods {
+        hmr: homerow_mods_right {
             compatible = "zmk,behavior-hold-tap";
-            label = "RIGHT_POSITIONAL_HOLD_TAP";
+            label = "HOMEROW_MODS_RIGHT";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <200>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <LEFT_KEYS>;
+            hold-trigger-key-positions = <FINGER_KEYS_LEFT>;
             hold-trigger-on-release;
         };
         ao_lower: ao_lower {
@@ -182,7 +181,7 @@
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
      &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y         &kp APOS
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-     &lhm LCTRL A  &lhm LALT R   &lhm LGUI S   &lhm LSHFT T  &kp G             &kp M         &rhm LSHFT N  &rhm LGUI E   &rhm LALT I   &rhm LCTRL O
+     &hml LCTRL A  &hml LALT R   &hml LGUI S   &hml LSHFT T  &kp G             &kp M         &hmr LSHFT N  &hmr LGUI E   &hmr LALT I   &hmr LCTRL O
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &kp COMMA     &kp DOT       &kp SLASH
 // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
