@@ -9,6 +9,8 @@
 
 #define FINGER_KEYS_LEFT 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
 #define FINGER_KEYS_RIGHT 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
+#define THUMB_KEYS_LEFT 30 31
+#define THUMB_KEYS_RIGHT 32 33
 
 #define QUICK_TAP_MS 175 // tapping twice quickly and holding on the second tap sends key repeat
 
@@ -21,6 +23,8 @@
 
 / {
     behaviors {
+        // docs: https://zmk.dev/docs/behaviors/hold-tap
+        // 'hold-trigger-on-release' basically sets 'tap-preffered' behavior when second key pressed is NOT in 'hold-trigger-key-positions', to register nested keys on same hand as taps when hand rolling, which would end up modified with 'balanced' behavior
         hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_LEFT";
@@ -29,7 +33,7 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <QUICK_TAP_MS>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <FINGER_KEYS_RIGHT>;
+            hold-trigger-key-positions = <FINGER_KEYS_RIGHT THUMB_KEYS_RIGHT THUMB_KEYS_LEFT>;
             hold-trigger-on-release;
         };
         hmr: homerow_mods_right {
@@ -40,7 +44,7 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <QUICK_TAP_MS>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <FINGER_KEYS_LEFT>;
+            hold-trigger-key-positions = <FINGER_KEYS_LEFT THUMB_KEYS_RIGHT THUMB_KEYS_LEFT>;
             hold-trigger-on-release;
         };
         // https://zmk.dev/docs/behaviors/macros#unicode-sequences
