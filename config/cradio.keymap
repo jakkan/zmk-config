@@ -10,6 +10,12 @@
 #define FINGER_KEYS_LEFT 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
 #define FINGER_KEYS_RIGHT 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
 
+// Define explicit momentary toggle instead of using defaults: https://zmk.dev/docs/behaviors/layers#layer-tap
+&lt {
+    flavor = "balanced";
+    tapping_term_ms = <200>;
+};
+
 / {
     behaviors {
         hml: homerow_mods_left {
