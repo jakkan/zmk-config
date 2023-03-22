@@ -179,11 +179,11 @@
 
     cond_layers {
         compatible = "zmk,conditional-layers";
-        config_tristate {
+        shift {
             if-layers = <NUM NAV>;
             then-layer = <SHF>;
         };
-        config_tristate {
+        function {
             if-layers = <SYM MOU>;
             then-layer = <FUN>;
         };
