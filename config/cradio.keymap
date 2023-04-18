@@ -93,14 +93,16 @@
                 , <&macro_tap     &kp N6>
                 , <&macro_tap     &kp RET>;
         };
-        ao_upper: ao_upper {
+        // For some reason I need to start by releasing shift otherwise hex sequence is capitilized, since shift was being held at start of sequence I press it at the end of sequence to restore state
+        // These macros seem to sometimes cause shift to get stuck pressed, requering a keyboard reset
             compatible = "zmk,behavior-macro";
             label = "AO_UPPER";
             #binding-cells = <0>;
             wait-ms = <40>;
             tap-ms = <40>;
             bindings
-                = <&macro_press   &kp LSHFT &kp LCTRL>
+                = <&macro_release &kp LSHFT>
+                , <&macro_press   &kp LSHFT &kp LCTRL>
                 , <&macro_tap     &kp U>
                 , <&macro_release &kp LSHFT &kp LCTRL>
                 , <&macro_tap     &kp C>
@@ -114,7 +116,8 @@
             wait-ms = <40>;
             tap-ms = <40>;
             bindings
-                = <&macro_press   &kp LSHFT &kp LCTRL>
+                = <&macro_release &kp LSHFT>
+                , <&macro_press   &kp LSHFT &kp LCTRL>
                 , <&macro_tap     &kp U>
                 , <&macro_release &kp LSHFT &kp LCTRL>
                 , <&macro_tap     &kp C>
@@ -128,7 +131,8 @@
             wait-ms = <40>;
             tap-ms = <40>;
             bindings
-                = <&macro_press   &kp LSHFT &kp LCTRL>
+                = <&macro_release &kp LSHFT>
+                , <&macro_press   &kp LSHFT &kp LCTRL>
                 , <&macro_tap     &kp U>
                 , <&macro_release &kp LSHFT &kp LCTRL>
                 , <&macro_tap     &kp D>
