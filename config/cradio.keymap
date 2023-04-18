@@ -15,7 +15,9 @@
 #define THUMB_KEYS_LEFT 30 31
 #define THUMB_KEYS_RIGHT 32 33
 
-#define QUICK_TAP_MS 175 // tapping twice quickly and holding on the second tap sends key repeat
+// docs: https://zmk.dev/docs/behaviors/hold-tap
+#define TAPPING_TERM_MS 200 // how long a key must be pressed to trigger hold behavior.
+#define QUICK_TAP_MS 150 // tapping twice quickly and holding on the second tap sends key repeat
 
 // Define explicit momentary toggle instead of using defaults: https://zmk.dev/docs/behaviors/layers#layer-tap
 &lt {
@@ -35,6 +37,7 @@
             flavor = "balanced";
             tapping-term-ms = <200>;
             quick-tap-ms = <QUICK_TAP_MS>;
+            global-quick-tap;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <FINGER_KEYS_RIGHT THUMB_KEYS_RIGHT THUMB_KEYS_LEFT>;
             hold-trigger-on-release;
@@ -46,6 +49,7 @@
             flavor = "balanced";
             tapping-term-ms = <200>;
             quick-tap-ms = <QUICK_TAP_MS>;
+            global-quick-tap;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <FINGER_KEYS_LEFT THUMB_KEYS_RIGHT THUMB_KEYS_LEFT>;
             hold-trigger-on-release;
