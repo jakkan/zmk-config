@@ -162,17 +162,17 @@
         compatible = "zmk,combos";
         combo_ao {
             timeout-ms = <50>;
-            key-positions = <11 20>;
+            key-positions = <10 19>;
             bindings = <&ao>;
         };
         combo_ae {
             timeout-ms = <50>;
-            key-positions = <11 18>;
+            key-positions = <10 17>;
             bindings = <&ae>;
         };
         combo_oe {
             timeout-ms = <50>;
-            key-positions = <18 20>;
+            key-positions = <17 19>;
             bindings = <&oe>;
         };
     };
