@@ -17,7 +17,9 @@
 
 // docs: https://zmk.dev/docs/behaviors/hold-tap
 #define TAPPING_TERM_MS 200 // how long a key must be pressed to trigger hold behavior.
-#define QUICK_TAP_MS 150 // tapping twice quickly and holding on the second tap sends key repeat
+// tapping twice quickly and holding on the second tap sends key repeat
+// more importantly also used to say that a tap quickly after another tap makes the first tap not be a hold, setting this too high means I have to wait before tapping a key after holding a modifier
+#define QUICK_TAP_MS 100
 
 // For layer toggle I use the default 200 ms timout with tap-preferred flavor, this means layer will be activated only if thumb key is pressed for timeout duration before released
 
