@@ -13,7 +13,7 @@
 // docs: https://zmk.dev/docs/behaviors/hold-tap
 #define TAPPING_TERM_MS 200 // how long a key must be pressed to trigger hold behavior.
 // tapping twice quickly and holding on the second tap sends key repeat
-#define QUICK_TAP_MS 100
+#define QUICK_TAP_MS 200
 #define COMBO_TERM_MS 40
 
 // For layer toggle I use the default 200 ms timout with tap-preferred flavor, this means layer will be activated only if thumb key is pressed for timeout duration before released
@@ -114,13 +114,21 @@
 
 / {
     behaviors {
+        clt: layer_toggle {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CUSTOM_LAYER_TOGGLE";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <QUICK_TAP_MS>;
+            tapping-term-ms = <TAPPING_TERM_MS>;
+            bindings = <&mo>, <&kp>;
+        };
         hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_LEFT";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <TAPPING_TERM_MS>;
-            quick-tap-ms = <QUICK_TAP_MS>;
             bindings = <&kp>, <&kp>;
 
         };
@@ -130,7 +138,6 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <TAPPING_TERM_MS>;
-            quick-tap-ms = <QUICK_TAP_MS>;
             bindings = <&kp>, <&kp>;
         };
         ao: ao_mod_morph {
@@ -211,7 +218,7 @@
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H         &kp COMMA     &kp DOT       &kp SLASH
 // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                               &lt NAV SPC   &lt MOU TAB       &lt SYM RET   &lt NUM BSPC
+                                               &clt NAV SPC  &lt MOU TAB       &clt SYM RET  &lt NUM BSPC
 //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
@@ -226,7 +233,7 @@
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &kp N1        &kp N2        &kp N3        &kp N4        &kp N5            &none         &none         &none         &none         &none
 // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                               &lt NAV SEMI  &kp GRAVE         &none         &none
+                                               &clt NAV SEMI &kp GRAVE         &none         &none
 //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
@@ -241,7 +248,7 @@
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &kp EXCL      &kp AT        &kp HASH      &kp DLLR      &kp PRCNT         &none         &none         &none         &none         &none
 // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                               &kp COLON     &lt MOU TILDE     &none         &none
+                                               &kp COLON     &clt MOU TILDE    &none         &none
 //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
@@ -256,7 +263,7 @@
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &none         &none         &none         &none         &none             &none         &kp HOME      &kp PG_DN     &kp PG_UP     &kp END
 // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                               &none         &none             &kp DEL       &lt NUM ESC
+                                               &none         &none             &kp DEL       &clt NUM ESC
 //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
@@ -271,7 +278,7 @@
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &none         &none         &none         &none         &none             &none         &none         &none         &none         &none
 // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                               &none         &none             &lt SYM RET   &none
+                                               &none         &none             &clt SYM RET  &none
 //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
             >;
         };
