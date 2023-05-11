@@ -10,15 +10,9 @@
 #define SHF 5
 #define FUN 6
 
-#define FINGER_KEYS_LEFT 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
-#define FINGER_KEYS_RIGHT 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
-#define THUMB_KEYS_LEFT 30 31
-#define THUMB_KEYS_RIGHT 32 33
-
 // docs: https://zmk.dev/docs/behaviors/hold-tap
 #define TAPPING_TERM_MS 200 // how long a key must be pressed to trigger hold behavior.
 // tapping twice quickly and holding on the second tap sends key repeat
-// more importantly also used to say that a tap quickly after another tap makes the first tap not be a hold, setting this too high means I have to wait before tapping a key after holding a modifier
 #define QUICK_TAP_MS 100
 #define COMBO_TERM_MS 40
 
@@ -120,32 +114,24 @@
 
 / {
     behaviors {
-        // 'hold-trigger-on-release' basically sets 'tap-preffered' behavior when second key pressed is NOT in 'hold-trigger-key-positions' to register nested keys on same hand as taps when hand rolling, which would end up modified with 'balanced' behavior
-        // 'global-quick-tap' forces tap behavior immediately when typing quickly, currently uses the same timeout as quick-tap-ms but will likely get its own timeout value in future versions of zmk 
         hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_LEFT";
             #binding-cells = <2>;
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <TAPPING_TERM_MS>;
             quick-tap-ms = <QUICK_TAP_MS>;
-            global-quick-tap;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <FINGER_KEYS_RIGHT THUMB_KEYS_RIGHT THUMB_KEYS_LEFT>;
-            hold-trigger-on-release;
 
         };
         hmr: homerow_mods_right {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_RIGHT";
             #binding-cells = <2>;
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <TAPPING_TERM_MS>;
             quick-tap-ms = <QUICK_TAP_MS>;
-            global-quick-tap;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <FINGER_KEYS_LEFT THUMB_KEYS_RIGHT THUMB_KEYS_LEFT>;
-            hold-trigger-on-release;
         };
         ao: ao_mod_morph {
             label = "ao";
