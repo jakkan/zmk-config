@@ -14,7 +14,7 @@
 #define TAPPING_TERM_MS 220 // how long a key must be pressed to trigger hold behavior.
 // tapping twice quickly and holding on the second tap sends key repeat
 #define QUICK_TAP_MS 100
-#define COMBO_TERM_MS 40
+#define COMBO_TERM_MS 30
 
 // For layer toggle I use the default 200 ms timout with tap-preferred flavor, this means layer will be activated only if thumb key is pressed for timeout duration before released
 
