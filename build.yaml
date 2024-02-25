@@ -17,3 +17,6 @@ include:
     shield: cradio_left
   - board: nice_nano_v2
     shield: cradio_right
+    # Reset keyboard halfs as part of pairing troubleshooting: https://zmk.dev/docs/troubleshooting#split-keyboard-halves-unable-to-pair
+  - board: nice_nano_v2
+    shield: settings_reset

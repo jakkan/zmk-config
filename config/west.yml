@@ -1,11 +1,11 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
+      url-base: https://github.com/petejohanson/     # <--- CHANGE REPO
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: feat/pointers-move-scroll                   # <--- CHANGE REVISION
       import: app/west.yml
   self:
     path: config
