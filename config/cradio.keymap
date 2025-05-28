@@ -48,19 +48,15 @@
     };
     combos {
         compatible = "zmk,combos";
-        combo_bootloader_left_homerow {
-            timeout-ms = <10000>; // 10 seconds
-            key-positions = <5 6 7 8>; // left homerow
+        combo_bootloader_left {
+            timeout-ms = <50>;
+            key-positions = <5 6 7 8 9>; // left middle row
             bindings = <&bootloader>;
-            layers = <DEF>; // Active on the default layer
-            slow-release = <true>; // Trigger after holding for timeout-ms
         };
-        combo_bootloader_right_homerow {
-            timeout-ms = <10000>; // 10 seconds
-            key-positions = <23 24 25 26>; // Right homerow
+        combo_bootloader_right {
+            timeout-ms = <50>;
+            key-positions = <22 23 24 25 26>; // Right middle row
             bindings = <&bootloader>;
-            layers = <DEF>; // Active on the default layer
-            slow-release = <true>; // Trigger after holding for timeout-ms
         };
     };
 };
