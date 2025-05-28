@@ -1,107 +1,12 @@
-# ZMK config
+# Quickstart
 
-This is my personal config for a 34 key Cradio keyboard running ZMK firmware. It's based on manna-harbour's miryoku.
+- Trigger github workflow to build firmware
+- Unzip firmware `unzip firmware.zip`
+- For each keyboard
+  - Plug it in
+  - Connect GND and RSP pins with "double-tap" to put board in bootloader mode
+  - Check if the keyboard is detected `ls | grep sda`
+  - Mount the keyboard `sudo mount /dev/sda /mnt/keeb`
+  - Copy firmware to keyboard `sudo cp cradio_right-nice_nano_v2-zmk.uf2 /mnt/keeb`
+  - Wait a moment for the keyboard to flash and restart
 
-zmk: https://zmk.dev
-
-cradio: https://github.com/davidphilipbarr/36keys/tree/master/34Keys/Cradio%20F
-
-miryoku: https://github.com/manna-harbour/miryoku
-
-## Design decisions
-
-Compared with miryoku this layout prioritizes logical layout and similarity to ordinary keyboards at the expence of efficiency.
-
-Here are the significant differences compared to miryoku:
-
-- Shifted symbols are in the same position as their unshifted counterparts
-  - To make it easier to switch to occational use on normal keyboards
-  - To make learning and remembering the layout easier
-- Only one way of doing things (no shortcut keys, no duplication in combos, not even a shifted symbols layer)
-  - To train muscle memory on fewer things
-- Numbers in 5x2 layot
-  - Similar to an ordinary layout where a hand is responsible for five numbers on a row
-- Only two thumb keys
-  - Found pressing an extra layer buttom more comfortable than reaching for the third thumb key
-
-## Layout
-
-Default layer
-```
-╭──────────────────────────────────────────────┬──────────────────────────────────────────────╮
-│                                              │                                              │
-│ q        w        f        p        b        │ j        l        u        y        APOS     │
-│                                              │                                              │
-│ CTRL/a   ALT/r    GUI/s    SHFT/t   g        │ m        SHFT/n   GUI/e    ALT/i    CTRL/o   │
-│                                              │                                              │
-│ z        x        c        d        v        │ k        h        ,        .        /        │
-│                                              │                                              │
-╰──────────────────────╮     NAV/SPC  TAB      │ RET      NUM/BSPC     ╭──────────────────────╯
-                       │                       │                       │
-                       ╰───────────────────────┴───────────────────────╯
-```
-
-Numbers layer
-```
-╭──────────────────────────────────────────────┬──────────────────────────────────────────────╮
-│                                              │                                              │
-│ BSLH     MINUS    EQUAL    LBKT     RBKT     │                                              │
-│                                              │                                              │
-│ 6        7        8        9        0        │          SHFT     GUI      ALT      CTRL     │
-│                                              │                                              │
-│ 1        2        3        4        5        │                                              │
-│                                              │                                              │
-╰──────────────────────╮     FUN/SEMI GRAVE    │                       ╭──────────────────────╯
-                       │                       │                       │
-                       ╰───────────────────────┴───────────────────────╯
-```
-
-Navigation layer
-```
-╭──────────────────────────────────────────────┬──────────────────────────────────────────────╮
-│                                              │                                              │
-│                                              │                                              │
-│                                              │                                              │
-│ CTRL     ALT      GUI      SHFT              │          LEFT     DOWN     UP       RIGHT    │
-│                                              │                                              │
-│                                              │          HOME     PG_DN    PG_UP    END      │
-│                                              │                                              │
-╰──────────────────────╮                       │ DEL      FUN / ESC    ╭──────────────────────╯                               
-                       │                       │                       │
-                       ╰───────────────────────┴───────────────────────╯
-```
-
-Function layer
-```
-╭──────────────────────────────────────────────┬──────────────────────────────────────────────╮
-│                                              │                                              │
-│ F11      F12      F13      F14      F15      │                                              │
-│                                              │                                              │
-│ F6       F7       F8       F9       F10      │ BT_CLR   BT_SEL 0 BT_SEL 1 BT_SEL 2 BT_SEL 3 │
-│                                              │                                              │
-│ F1       F2       F3       F4       F5       │                                              │
-│                                              │                                              │
-╰──────────────────────╮                       │                       ╭──────────────────────╯                               
-                       │                       │                       │
-                       ╰───────────────────────┴───────────────────────╯
-```
-
-## Building
-
-Firmware is built on push by github action.
-
-## Flashing
-
-Do for each half:
-
-- Download firmware from Github
-- Plug in the keyboard with USB
-- Double press reset button and wait for the keyboard to be detected as a USB connected device
-- Copy firm ware to keyboard
-
-## Related projects
-
-These projects rely on home row mods and home row arrow keys.
-
-- [https://github.com/jakkan/neovim-config](https://github.com/jakkan/neovim-config)
-- [https://github.com/jakkan/dotfiles](https://github.com/jakkan/dotfiles)
