@@ -50,12 +50,12 @@
         compatible = "zmk,combos";
         combo_bootloader_left {
             timeout-ms = <50>;
-            key-positions = <5 6 7 8 9>; // left middle row
+            key-positions = <10 11 12 13 14>; // left middle row
             bindings = <&bootloader>;
         };
         combo_bootloader_right {
             timeout-ms = <50>;
-            key-positions = <22 23 24 25 26>; // Right middle row
+            key-positions = <15 16 17 18 19>; // Right middle row
             bindings = <&bootloader>;
         };
     };
