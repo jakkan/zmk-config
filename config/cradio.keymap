@@ -46,6 +46,23 @@
             bindings = <&kp>, <&kp>;
         };
     };
+    combos {
+        compatible = "zmk,combos";
+        combo_bootloader_left_homerow {
+            timeout-ms = <10000>; // 10 seconds
+            key-positions = <5 6 7 8>; // left homerow
+            bindings = <&bootloader>;
+            layers = <DEF>; // Active on the default layer
+            slow-release = <true>; // Trigger after holding for timeout-ms
+        };
+        combo_bootloader_right_homerow {
+            timeout-ms = <10000>; // 10 seconds
+            key-positions = <23 24 25 26>; // Right homerow
+            bindings = <&bootloader>;
+            layers = <DEF>; // Active on the default layer
+            slow-release = <true>; // Trigger after holding for timeout-ms
+        };
+    };
 };
 
 / {
