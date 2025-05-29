@@ -61,7 +61,7 @@
         combo_bootloader_quick {
             timeout-ms = <100>;
             key-positions = <0 1>; // qw
-            bindings = <&kp A>;
+            bindings = <&bootloader>;
         };
     };
 };
