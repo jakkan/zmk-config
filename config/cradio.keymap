@@ -69,6 +69,18 @@
             key-positions = <8 9>; // qw
             bindings = <&bootloader>;
         };
+        combo_home_l {
+            timeout-ms = <100>;
+            key-positions = <10 11 12 13>;
+            bindings = <&kp A>;
+            layers = <SHF>;
+        };
+        combo_home_r {
+            timeout-ms = <100>;
+            key-positions = <16 17 18 19 20>;
+            bindings = <&kp A>;
+            layers = <FUN>;
+        };
     };
 };
 
