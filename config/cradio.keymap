@@ -62,7 +62,7 @@
         noboot: none_or_bootloader {
             compatible = "zmk,behavior-hold-tap";
             label = "NONE_OR_BOOTLOADER";
-            #binding-cells = <0>;   // Neither &bootloader nor &none take parameters
+            #binding-cells = <2>;   // Hold-tap behaviors require 2 parameters
             flavor = "tap-preferred";
             tapping-term-ms = <5000>;
             bindings = <&bootloader>, <&none>;
@@ -168,7 +168,7 @@
             label = "FUN";
             bindings = <
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-     &kp F11       &kp F12       &kp F13       &kp F14       &kp F15           &none         &none         &none         &none         &noboot
+     &kp F11       &kp F12       &kp F13       &kp F14       &kp F15           &none         &none         &none         &none         &noboot 0 0
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &kp F6        &kp F7        &kp F8        &kp F9        &kp F10           &none         &kp LSHFT     &kp LGUI      &kp LALT      &kp LCTRL
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
