@@ -62,6 +62,12 @@
             timeout-ms = <100>;
             key-positions = <0 1>; // qw
             bindings = <&bootloader>;
+            layers = <SHF>;
+        };
+        combo_bootloader_othr {
+            timeout-ms = <100>;
+            key-positions = <8 9>; // qw
+            bindings = <&bootloader>;
         };
     };
 };
