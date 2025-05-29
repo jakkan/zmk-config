@@ -18,6 +18,12 @@
 
 // For layer toggle I use the default 200 ms timout with tap-preferred flavor, this means layer will be activated only if thumb key is pressed for timeout duration before released
 
+// https://zmk.dev/docs/keymaps/behaviors/hold-tap#interrupt-flavors
+// The "hold-preferred" flavor triggers the hold behavior when the tapping-term-ms has expired or another key is pressed.
+// The "balanced" flavor will trigger the hold behavior when the tapping-term-ms has expired or another key is pressed and released while the hold-tap is held.
+// The "tap-preferred" flavor triggers the hold behavior when the tapping-term-ms has expired. Pressing another key within tapping-term-ms does not affect the decision.
+// The "tap-unless-interrupted" flavor triggers a hold behavior only when another key is pressed before tapping-term-ms has expired. It triggers the tap behavior in all other situations. Note that this flavor inverts the decision logic with respect to the tapping term.
+
 / {
     behaviors {
         lay: layer_toggle {
@@ -45,41 +51,21 @@
             tapping-term-ms = <TAPPING_TERM_MS>;
             bindings = <&kp>, <&kp>;
         };
-    };
-    combos {
-        compatible = "zmk,combos";
-        combo_bootloader_left {
-            timeout-ms = <50>;
-            key-positions = <10 11 12 13 14>; // left middle row
-            bindings = <&bootloader>;
+        kpboot: kp_or_bootloader {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KP_OR_BOOTLOADER";
+            #binding-cells = <1>;   // Expects one parameter (the keycode for the tap)
+            flavor = "tap-preferred";
+            tapping-term-ms = <5000>;
+            bindings = <&bootloader>, <&kp>; 
         };
-        combo_bootloader_right {
-            timeout-ms = <50>;
-            key-positions = <15 16 17 18 19>; // Right middle row
-            bindings = <&bootloader>;
-        };
-        combo_bootloader_quick {
-            timeout-ms = <100>;
-            key-positions = <0 1>; // qw
-            bindings = <&bootloader>;
-            layers = <SHF>;
-        };
-        combo_bootloader_othr {
-            timeout-ms = <100>;
-            key-positions = <8 9>; // qw
-            bindings = <&bootloader>;
-        };
-        combo_home_l {
-            timeout-ms = <100>;
-            key-positions = <10 11 12 13>;
-            bindings = <&kp A>;
-            layers = <SHF>;
-        };
-        combo_home_r {
-            timeout-ms = <100>;
-            key-positions = <16 17 18 19 20>;
-            bindings = <&kp A>;
-            layers = <FUN>;
+        noboot: none_or_bootloader {
+            compatible = "zmk,behavior-hold-tap";
+            label = "NONE_OR_BOOTLOADER";
+            #binding-cells = <0>;   // Neither &bootloader nor &none take parameters
+            flavor = "tap-preferred";
+            tapping-term-ms = <5000>;
+            bindings = <&bootloader>, <&none>;
         };
     };
 };
@@ -167,7 +153,7 @@
             label = "SHF";
             bindings = <
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-     &kp LS(Q)     &kp LS(W)     &kp LS(F)     &kp LS(P)     &kp LS(B)         &kp LS(J)     &kp LS(L)     &kp LS(U)     &kp LS(Y)     &kp LS(APOS)
+     &kpboot LS(Q) &kp LS(W)     &kp LS(F)     &kp LS(P)     &kp LS(B)         &kp LS(J)     &kp LS(L)     &kp LS(U)     &kp LS(Y)     &kp LS(APOS)
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &kp LS(A)     &kp LS(R)     &kp LS(S)     &kp LS(T)     &kp LS(G)         &kp LS(M)     &kp LS(N)     &kp LS(E)     &kp LS(I)     &kp LS(O)
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
@@ -182,7 +168,7 @@
             label = "FUN";
             bindings = <
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-     &kp F11       &kp F12       &kp F13       &kp F14       &kp F15           &none         &none         &none         &none         &none
+     &kp F11       &kp F12       &kp F13       &kp F14       &kp F15           &none         &none         &none         &none         &noboot
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &kp F6        &kp F7        &kp F8        &kp F9        &kp F10           &none         &kp LSHFT     &kp LGUI      &kp LALT      &kp LCTRL
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
