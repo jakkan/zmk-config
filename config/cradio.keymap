@@ -54,7 +54,7 @@
         kpboot: kp_or_bootloader {
             compatible = "zmk,behavior-hold-tap";
             label = "KP_OR_BOOTLOADER";
-            #binding-cells = <1>;   // Expects one parameter (the keycode for the tap)
+            #binding-cells = <2>;   // Hold-tap behaviors require 2 parameters
             flavor = "tap-preferred";
             tapping-term-ms = <5000>;
             bindings = <&bootloader>, <&kp>; 
@@ -153,7 +153,7 @@
             label = "SHF";
             bindings = <
 // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-     &kpboot LS(Q) &kp LS(W)     &kp LS(F)     &kp LS(P)     &kp LS(B)         &kp LS(J)     &kp LS(L)     &kp LS(U)     &kp LS(Y)     &kp LS(APOS)
+     &kpboot 0 LS(Q) &kp LS(W)   &kp LS(F)     &kp LS(P)     &kp LS(B)         &kp LS(J)     &kp LS(L)     &kp LS(U)     &kp LS(Y)     &kp LS(APOS)
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
      &kp LS(A)     &kp LS(R)     &kp LS(S)     &kp LS(T)     &kp LS(G)         &kp LS(M)     &kp LS(N)     &kp LS(E)     &kp LS(I)     &kp LS(O)
 // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
